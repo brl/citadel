@@ -6,6 +6,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 inherit kernel 
 
 SRC_URI = "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.0.6.tar.xz\
+    file://0117-WireGuard.patch \
     file://defconfig \
 "
 SRC_URI[md5sum] = "301cf9a7706c750ca76b322eb98bfe15"
