@@ -70,10 +70,13 @@ RDEPENDS_${PN} = "\
     e2fsprogs-resize2fs \
     dosfstools \
     libpam \
+    libpam-pwdfile \
+    mkpasswd \
     wireguard-tools \
     resolvconf \
     udisks2 \
     efivar \
     efibootmgr \
     iw \
+    sudo \
 "

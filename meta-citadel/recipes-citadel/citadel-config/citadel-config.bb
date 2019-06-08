@@ -37,7 +37,9 @@ SRC_URI = "\
     file://locale.conf \
     file://environment.sh \
     file://fstab \
+    file://sudo-citadel \
     file://citadel-ifconfig.sh \
+    file://citadel-setpassword.sh \
     file://00-storage-tmpfiles.conf \
     file://NetworkManager.conf \
     file://share/dot.bashrc \
@@ -48,6 +50,7 @@ SRC_URI = "\
     file://systemd/zram-swap.service \
     file://systemd/iptables.service \
     file://systemd/session-switcher.service \
+    file://systemd/citadel-setpassword.service \
     file://skel/profile \
     file://skel/bashrc \
     file://skel/vimrc \
@@ -64,12 +67,12 @@ USERADD_PACKAGES = "${PN}"
 USERADD_PARAM_${PN} = "-m -u 1000 -s /bin/bash citadel"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
-# for citadel-ifconfig.sh
+# for citadel-ifconfig.sh citadel-setpassword.sh
 RDEPENDS_${PN} = "bash"
 
 inherit allarch systemd useradd
 
-SYSTEMD_SERVICE_${PN} = "zram-swap.service watch-run-user.path iptables.service session-switcher.service"
+SYSTEMD_SERVICE_${PN} = "zram-swap.service watch-run-user.path iptables.service session-switcher.service citadel-setpassword.service"
 
 do_install() {
     install -m 0755 -d ${D}/storage
@@ -83,14 +86,17 @@ do_install() {
     install -m 0755 -d ${D}${sysconfdir}/NetworkManager
     install -m 0755 -d ${D}${sysconfdir}/polkit-1/rules.d
     install -m 0755 -d ${D}${sysconfdir}/modprobe.d
+    install -m 0755 -d ${D}${sysconfdir}/sudoers.d
     install -m 0755 -d ${D}${datadir}/iptables
     install -m 0755 -d ${D}${datadir}/factory/skel
     install -m 0700 -d ${D}${localstatedir}/lib/NetworkManager
     install -m 0700 -d ${D}${localstatedir}/lib/NetworkManager/system-connections
+    install -m 0755 -d ${D}${datadir}/citadel
 
     install -m 0644 ${WORKDIR}/locale.conf ${D}${sysconfdir}/locale.conf
     install -m 0644 ${WORKDIR}/environment.sh ${D}${sysconfdir}/profile.d/environment.sh
     install -m 0644 ${WORKDIR}/fstab ${D}${sysconfdir}/fstab
+    install -m 0440 ${WORKDIR}/sudo-citadel ${D}${sysconfdir}/sudoers.d/citadel
     install -m 0644 ${WORKDIR}/00-storage-tmpfiles.conf ${D}${sysconfdir}/tmpfiles.d
     install -m 0644 ${WORKDIR}/NetworkManager.conf ${D}${sysconfdir}/NetworkManager
 
@@ -99,6 +105,7 @@ do_install() {
     install -m 644 ${WORKDIR}/systemd/iptables.service ${D}${systemd_system_unitdir}
 
     install -m 644 ${WORKDIR}/systemd/session-switcher.service ${D}${systemd_system_unitdir}
+    install -m 644 ${WORKDIR}/systemd/citadel-setpassword.service ${D}${systemd_system_unitdir}
 
     install -m 644 ${WORKDIR}/systemd/watch-run-user.path ${D}${systemd_system_unitdir}
     install -m 644 ${WORKDIR}/systemd/watch-run-user.service ${D}${systemd_system_unitdir}
@@ -114,6 +121,7 @@ do_install() {
 
     install -m 0644 ${WORKDIR}/udev/citadel-network.rules ${D}${sysconfdir}/udev/rules.d/
     install -m 0755 ${WORKDIR}/citadel-ifconfig.sh ${D}${libexecdir}
+    install -m 0754 ${WORKDIR}/citadel-setpassword.sh ${D}${libexecdir}
 
     install -m 0644 ${WORKDIR}/udev/pci-pm.rules ${D}${sysconfdir}/udev/rules.d/
     install -m 0644 ${WORKDIR}/udev/scsi-alpm.rules ${D}${sysconfdir}/udev/rules.d/

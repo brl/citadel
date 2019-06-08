@@ -1,0 +1,2 @@
+# Citadel sudo
+citadel	ALL=(ALL:ALL) ALL

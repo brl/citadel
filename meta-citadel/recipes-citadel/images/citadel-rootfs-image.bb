@@ -4,7 +4,7 @@ LICENSE = "MIT"
 
 SYSTEMD_DEFAULT_TARGET = "graphical.target"
 
-ROOTFS_POSTPROCESS_COMMAND += "set_citadel_user_password; symlink_lib64; setup_var; append_os_release;"
+ROOTFS_POSTPROCESS_COMMAND += "set_disable_root_password; symlink_lib64; setup_var; append_os_release;"
 
 IMAGE_INSTALL += "\
     packagegroup-citadel-base \
@@ -18,12 +18,16 @@ require citadel-image.inc
 inherit citadel-image
 
 set_blank_user_password() {
-    sed -i 's%^citadel:!:%citadel::%' ${IMAGE_ROOTFS}/etc/shadow
+    sed -i 's%^citadel::%citadel:!:%' ${IMAGE_ROOTFS}/etc/shadow
 }
 
 set_citadel_user_password() {
     # crypt("citadel", "aa")
     sed -i 's%^citadel:!:%citadel:aadg8rGtZzOY6:%' ${IMAGE_ROOTFS}/etc/shadow
+}
+
+set_disable_root_password() {
+    sed -i 's%^root::%root:!:%' ${IMAGE_ROOTFS}/etc/shadow
 }
 
 setup_var() {
