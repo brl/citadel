@@ -1,9 +1,9 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-SRC_URI = "http://ftp.debian.org/debian/pool/main/w/whois/whois_${PV}.tar.xz"
-SRC_URI[md5sum] = "8bbf1105702b9a03445211f45bd53efe"
-SRC_URI[sha256sum] = "eee33a3b3a56912fbf115a7dd24ed60314e2707a3ad6aa604ca2752c1ed01f57"
+SRC_URI = "https://github.com/rfc1036/whois/archive/v${PV}.tar.gz"
+SRC_URI[md5sum] = "e7fce43576e9a3a3f20bef04d7941a8a"
+SRC_URI[sha256sum] = "d928b981dc949a2ea1d0512d20da74707953369f889a88d8f84f1a4b05b822d2"
 S = "${WORKDIR}/whois-${PV}"
 
 DEPENDS = "libxcrypt libidn2"
