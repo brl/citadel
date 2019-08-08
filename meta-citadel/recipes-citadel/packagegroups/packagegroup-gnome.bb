@@ -24,6 +24,7 @@ RDEPENDS_${PN} = "\
     gnome-shell \
     hicolor-icon-theme \
     dash-to-panel \
+    gnome-shell-extension-drive-menu \
     citadel-config-gnome \
 "
 
