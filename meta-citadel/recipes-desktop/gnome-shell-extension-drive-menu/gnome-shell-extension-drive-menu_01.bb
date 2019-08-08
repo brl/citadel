@@ -16,17 +16,3 @@ do_configure_prepend () {
 	cd ${S}
 	./meson-gse/meson-gse
 }
-#do_configure () {
-#	:
-#}
-
-#do_compile () {
-#	:
-#}
-
-#do_install () {
-#	cd ${S}
-#	./meson-gse/meson-gse
-#	meson build --prefix=${D}/usr
-#	DESTDIR='${D}' ninja -v ${PARALLEL_MAKEINST} -C build install
-#}
