@@ -33,7 +33,7 @@ gtk-enable-primary-paste=false
 clock-format='12h'
 
 [org.gnome.shell]
-enabled-extensions=['dash-to-panel@jderose9.github.com']
+enabled-extensions=['dash-to-panel@jderose9.github.com', 'drive-menu@subgraph.com']
 
 [org.gnome.shell.extensions]
 user-theme-name='Adapta-Eta'
