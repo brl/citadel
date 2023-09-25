@@ -9,7 +9,7 @@ SRC_URI = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${PV}.tar.xz\
     file://defconfig \
 "
 
-SRC_URI[sha256sum] = "0de4f83996951c6faf9b2225db4f645882c47b1a09198190f97bd46e5f5fa257"
+SRC_URI[sha256sum] = "4cac13f7b17bd8dcf9032ad68f9123ab5313d698c9f59416043165150763eb4f"
 
 LINUX_VERSION ?= "${PV}"
 S = "${WORKDIR}/linux-${LINUX_VERSION}"
