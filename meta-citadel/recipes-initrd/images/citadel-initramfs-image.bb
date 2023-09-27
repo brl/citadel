@@ -89,8 +89,8 @@ PACKAGE_INSTALL = "\
     kernel-module-serio-raw \
     kernel-module-snd \
     kernel-module-soundcore \
+    kernel-module-vmd \
     kernel-module-virtio-gpu \
-    kernel-module-wmi \
     kernel-module-xhci-plat-hcd \
     liberation-fonts \
     util-linux-fsck \
