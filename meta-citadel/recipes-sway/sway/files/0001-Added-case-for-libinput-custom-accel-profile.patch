@@ -1,0 +1,23 @@
+From fd457da60c963588a6423f4cf263e861078e8422 Mon Sep 17 00:00:00 2001
+From: Bruce Leidl <bruce@subgraph.com>
+Date: Wed, 27 Sep 2023 07:29:28 -0400
+Subject: [PATCH] Added case for libinput custom accel profile
+
+---
+ sway/ipc-json.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/sway/ipc-json.c b/sway/ipc-json.c
+index 61613f53..16c4b858 100644
+--- a/sway/ipc-json.c
++++ b/sway/ipc-json.c
+@@ -905,6 +905,9 @@ static json_object *describe_libinput_device(struct libinput_device *device) {
+ 		case LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE:
+ 			accel_profile = "adaptive";
+ 			break;
++		case LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM:
++			accel_profile = "custom";
++			break;
+ 		}
+ 		json_object_object_add(object, "accel_profile",
+ 				json_object_new_string(accel_profile));

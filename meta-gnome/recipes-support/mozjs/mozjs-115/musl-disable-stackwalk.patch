@@ -1,0 +1,27 @@
+From 37039e1af278b7776fb6b614ded5deaf0c66ece9 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Mon, 18 Sep 2023 19:32:55 +0000
+Subject: [PATCH] Musl does not have stack unwinder like glibc therefore we can
+ not assume that its always available on musl, we do need to check for target
+ environment as well which could be musl or glibc.
+
+Upstream-Status: Pending
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+
+---
+ mozglue/misc/StackWalk.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mozglue/misc/StackWalk.cpp b/mozglue/misc/StackWalk.cpp
+index 307715b170..a8d3cb40c0 100644
+--- a/mozglue/misc/StackWalk.cpp
++++ b/mozglue/misc/StackWalk.cpp
+@@ -43,7 +43,7 @@ using namespace mozilla;
+ #  define MOZ_STACKWALK_SUPPORTS_MACOSX 0
+ #endif
+ 
+-#if (defined(linux) &&                                            \
++#if (defined(linux) && defined(__GLIBC__) &&                      \
+      ((defined(__GNUC__) && (defined(__i386) || defined(PPC))) || \
+       defined(HAVE__UNWIND_BACKTRACE)))
+ #  define MOZ_STACKWALK_SUPPORTS_LINUX 1

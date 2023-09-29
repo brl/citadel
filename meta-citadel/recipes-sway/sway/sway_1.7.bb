@@ -35,11 +35,11 @@ DEPENDS += " \
 #	wl-clipboard \
 #"
 
-SRC_URI = " \
-    git://github.com/swaywm/sway.git;protocol=https;branch=master \
-    file://config \
-    file://0001-Reinstate-wayland-0-as-starting-display-socket-for-C.patch \
-"
+SRC_URI = "git://github.com/swaywm/sway.git;protocol=https;branch=master \
+           file://config \
+           file://0001-Reinstate-wayland-0-as-starting-display-socket-for-C.patch \
+           file://0001-Added-case-for-libinput-custom-accel-profile.patch \
+           "
 
 SRCREV = "9d99bb956fea8922f8e0196d67eabbd510c53f1f"
 PV = "1.7"

@@ -1,0 +1,196 @@
+From 2f5368dd4eef27ee3afaed761932601393e4875e Mon Sep 17 00:00:00 2001
+From: Bruce Leidl <bruce@subgraph.com>
+Date: Thu, 22 Sep 2022 20:31:50 -0400
+Subject: [PATCH] Remove panels for Citadel
+
+---
+
+diff --git a/meson.build b/meson.build
+index 6b31d76..d997ed2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -172,7 +172,6 @@ gnome_desktop_dep = dependency('gnome-desktop-4')
+ gnome_bg_dep = dependency('gnome-bg-4')
+ gnome_rr_dep = dependency('gnome-rr-4')
+ gnome_settings_dep = dependency('gnome-settings-daemon', version: '>= 41.0')
+-goa_dep = dependency('goa-1.0', version: goa_req_version)
+ gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 42.alpha')
+ libxml_dep = dependency('libxml-2.0')
+ pulse_dep = dependency('libpulse', version: pulse_req_version)
+@@ -206,30 +205,6 @@ foreach polkit_file: polkit_files
+   assert(r.returncode() == 0, 'ITS support missing from polkit, please upgrade or contact your distribution')
+ endforeach
+ 
+-# Check for CUPS 1.4 or newer
+-cups_dep = dependency('cups', version : '>= 1.4', required: false)
+-assert(cups_dep.found(), 'CUPS 1.4 or newer not found')
+-
+-# https://bugzilla.gnome.org/show_bug.cgi?id=696766
+-cups_cflags = []
+-if cups_dep.version().version_compare('>= 1.6')
+-  cups_cflags += '-D_PPD_DEPRECATED='
+-endif
+-
+-# cups headers
+-check_headers = [
+-  ['HAVE_CUPS_CUPS_H', 'cups/cups.h'],
+-  ['HAVE_CUPS_PPD_H', 'cups/ppd.h']
+-]
+-
+-foreach header: check_headers
+-  assert(cc.has_header(header[1], args: cups_cflags), 'CUPS headers not found: ' + header[1])
+-endforeach
+-
+-config_h.set10('HAVE_CUPS_HTTPCONNECT2',
+-               cc.has_function('httpConnect2', dependencies: cups_dep),
+-               description: 'Define if httpConnect2() is available in CUPS')
+-
+ # IBus support
+ enable_ibus = get_option('ibus')
+ if enable_ibus
+diff --git a/panels/meson.build b/panels/meson.build
+index 502fa3b..d8b2e25 100644
+--- a/panels/meson.build
++++ b/panels/meson.build
+@@ -1,28 +1,21 @@
+ subdir('common')
+ 
+ panels = [
+-  'applications',
+   'background',
+   'color',
+   'datetime',
+-  'default-apps',
+   'display',
+   'info-overview',
+   'keyboard',
+   'mouse',
+   'multitasking',
+   'notifications',
+-  'online-accounts',
+   'power',
+-  'printers',
+   'privacy',
+   'region',
+-  'removable-media',
+   'search',
+-  'sharing',
+   'sound',
+   'universal-access',
+-  'user-accounts',
+  'wwan',
+ ]
+ 
+diff --git a/shell/cc-panel-list.c b/shell/cc-panel-list.c
+index a39c880..9f95193 100644
+--- a/shell/cc-panel-list.c
++++ b/shell/cc-panel-list.c
+@@ -365,10 +365,7 @@ static const gchar * const panel_order[] = {
+   "notifications",
+   "search",
+   "multitasking",
+-  "applications",
+   "privacy",
+-  "online-accounts",
+-  "sharing",
+ 
+   /* Devices page */
+   "sound",
+@@ -376,16 +373,12 @@ static const gchar * const panel_order[] = {
+   "display",
+   "mouse",
+   "keyboard",
+-  "printers",
+-  "removable-media",
+   "wacom",
+   "color",
+ 
+   /* Details page */
+   "region",
+   "universal-access",
+-  "user-accounts",
+-  "default-apps",
+   "reset-settings",
+   "datetime",
+   "info-overview",
+diff --git a/shell/cc-panel-loader.c b/shell/cc-panel-loader.c
+index 3b33f4e..6eff958 100644
+--- a/shell/cc-panel-loader.c
++++ b/shell/cc-panel-loader.c
+@@ -31,14 +31,12 @@
+ #ifndef CC_PANEL_LOADER_NO_GTYPES
+ 
+ /* Extension points */
+-extern GType cc_applications_panel_get_type (void);
+ extern GType cc_background_panel_get_type (void);
+ #ifdef BUILD_BLUETOOTH
+ extern GType cc_bluetooth_panel_get_type (void);
+ #endif /* BUILD_BLUETOOTH */
+ extern GType cc_color_panel_get_type (void);
+ extern GType cc_date_time_panel_get_type (void);
+-extern GType cc_default_apps_panel_get_type (void);
+ extern GType cc_display_panel_get_type (void);
+ extern GType cc_info_overview_panel_get_type (void);
+ extern GType cc_keyboard_panel_get_type (void);
+@@ -49,17 +47,12 @@ extern GType cc_network_panel_get_type (void);
+ extern GType cc_wifi_panel_get_type (void);
+ #endif /* BUILD_NETWORK */
+ extern GType cc_notifications_panel_get_type (void);
+-extern GType cc_online_accounts_panel_get_type (void);
+ extern GType cc_power_panel_get_type (void);
+-extern GType cc_printers_panel_get_type (void);
+ extern GType cc_privacy_panel_get_type (void);
+ extern GType cc_region_panel_get_type (void);
+-extern GType cc_removable_media_panel_get_type (void);
+ extern GType cc_search_panel_get_type (void);
+-extern GType cc_sharing_panel_get_type (void);
+ extern GType cc_sound_panel_get_type (void);
+ extern GType cc_ua_panel_get_type (void);
+-extern GType cc_user_panel_get_type (void);
+ #ifdef BUILD_WACOM
+ extern GType cc_wacom_panel_get_type (void);
+ #endif /* BUILD_WACOM */
+@@ -88,14 +81,12 @@ extern void cc_wwan_panel_static_init_func (void);
+ 
+ static CcPanelLoaderVtable default_panels[] =
+ {
+-  PANEL_TYPE("applications",     cc_applications_panel_get_type,         NULL),
+   PANEL_TYPE("background",       cc_background_panel_get_type,           NULL),
+ #ifdef BUILD_BLUETOOTH
+   PANEL_TYPE("bluetooth",        cc_bluetooth_panel_get_type,            NULL),
+ #endif
+   PANEL_TYPE("color",            cc_color_panel_get_type,                NULL),
+   PANEL_TYPE("datetime",         cc_date_time_panel_get_type,            NULL),
+-  PANEL_TYPE("default-apps",     cc_default_apps_panel_get_type,         NULL),
+   PANEL_TYPE("display",          cc_display_panel_get_type,              NULL),
+   PANEL_TYPE("info-overview",    cc_info_overview_panel_get_type,        NULL),
+   PANEL_TYPE("keyboard",         cc_keyboard_panel_get_type,             NULL),
+@@ -106,17 +97,12 @@ static CcPanelLoaderVtable default_panels[] =
+   PANEL_TYPE("wifi",             cc_wifi_panel_get_type,                 cc_wifi_panel_static_init_func),
+ #endif
+   PANEL_TYPE("notifications",    cc_notifications_panel_get_type,        NULL),
+-  PANEL_TYPE("online-accounts",  cc_online_accounts_panel_get_type,      NULL),
+   PANEL_TYPE("power",            cc_power_panel_get_type,                NULL),
+-  PANEL_TYPE("printers",         cc_printers_panel_get_type,             NULL),
+   PANEL_TYPE("privacy",          cc_privacy_panel_get_type,              NULL),
+   PANEL_TYPE("region",           cc_region_panel_get_type,               NULL),
+-  PANEL_TYPE("removable-media",  cc_removable_media_panel_get_type,      NULL),
+   PANEL_TYPE("search",           cc_search_panel_get_type,               NULL),
+-  PANEL_TYPE("sharing",          cc_sharing_panel_get_type,              NULL),
+   PANEL_TYPE("sound",            cc_sound_panel_get_type,                NULL),
+   PANEL_TYPE("universal-access", cc_ua_panel_get_type,                   NULL),
+-  PANEL_TYPE("user-accounts",    cc_user_panel_get_type,                 NULL),
+ #ifdef BUILD_WACOM
+   PANEL_TYPE("wacom",            cc_wacom_panel_get_type,                cc_wacom_panel_static_init_func),
+ #endif
+diff --git a/tests/meson.build b/tests/meson.build
+index 37334b7..d942799 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -9,6 +9,4 @@ if not libadwaita_is_subproject
+   subdir('interactive-panels')
+ endif
+ 
+-subdir('printers')
+ subdir('info')
+-subdir('keyboard')

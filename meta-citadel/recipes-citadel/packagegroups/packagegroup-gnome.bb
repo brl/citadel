@@ -15,6 +15,7 @@ RDEPENDS:${PN} = "\
     gnome-disk-utility \
     gnome-system-monitor \
     libgnome-desktop \
+    libsoup \
     mutter \
     gjs \
     gvfs \
