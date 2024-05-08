@@ -9,6 +9,7 @@ S = "${WORKDIR}"
 
 SRC_URI = "\
     file://gsettings/90_citadel.gschema.override \
+    file://gsettings/com.subgraph.RealmConfig.gschema.xml \
     file://dconf/build.d/realms.d/initial-realm-dconf.conf \
     file://dconf/build.d/citadel.d/citadel-dconf.conf \
 "
@@ -29,6 +30,7 @@ do_install() {
     install -m 0755 -d ${D}${datadir}/factory/storage/citadel-state/citadel-dconf
 
     install -m 644 ${S}/gsettings/90_citadel.gschema.override ${D}${datadir}/glib-2.0/schemas
+    install -m 644 ${S}/gsettings/com.subgraph.RealmConfig.gschema.xml ${D}${datadir}/glib-2.0/schemas
     install -m 644 ${WORKDIR}/dconf-output/user ${D}${sysconfdir}/skel/.config/dconf
     install -m 644 ${WORKDIR}/dconf-output/citadel ${D}${datadir}/factory/storage/citadel-state/citadel-dconf/user
 }

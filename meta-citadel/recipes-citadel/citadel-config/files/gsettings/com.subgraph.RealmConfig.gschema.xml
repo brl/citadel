@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.subgraph.citadel" path="/com/subgraph/citadel/">
+        <key name="label-color-list" type="as">
+            <default>[
+                'rgb(153,193,241)',
+                'rgb(143,240,164)',
+                'rgb(249,240,107)',
+                'rgb(255,190,111)',
+                'rgb(246,97,81)',
+                'rgb(220,138,221)',
+                'rgb(205,171,143)'
+                ]</default>
+            <summary />
+        </key>
+
+        <key name="realm-label-colors" type="as">
+            <default>['main:rgb(153,193,241)']</default>
+        </key>
+        <key name="realm-label-show-citadel" type="b">
+            <default>true</default>
+            <summary>Show label on Citadel windows</summary>
+        </key>
+        <key name="realm-label-show-all" type="b">
+            <default>false</default>
+            <summary>Show labels on all windows including windows belonging to current realm context</summary>
+        </key>
+        <key name="realm-label-show-app-icons" type="b">
+            <default>true</default>
+            <summary>Display labels above application icons in overview</summary>
+        </key>
+    </schema>
+</schemalist>

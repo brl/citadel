@@ -511,7 +511,6 @@ do_install() {
     install -d ${D}${libexecdir}
     install -d ${D}${systemd_system_unitdir}
     install -d ${D}${datadir}/applications
-    install -d ${D}${datadir}/glib-2.0/schemas
 
     # Services desktop sync
     install -m 644 ${S}/systemd/citadel-desktop-watcher.path ${D}${systemd_system_unitdir}
@@ -535,7 +534,6 @@ do_install() {
     # realm-config-ui
     install -m 0755 ${TARGET_BIN}/realm-config-ui ${D}${libexecdir}
     install -m 0644 ${S}/data/com.subgraph.RealmConfig.desktop ${D}${datadir}/applications
-    install -m 0644 ${S}/data/com.subgraph.RealmConfig.gschema.xml ${D}${datadir}/glib-2.0/schemas
 
     # /usr/libexec/citadel-tool
     install -m 755 ${TARGET_BIN}/citadel-tool ${D}${libexecdir}
