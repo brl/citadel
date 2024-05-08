@@ -2,6 +2,8 @@
 Description=Launch default realm
 ConditionPathExists=!/run/realms
 ConditionPathExists=/realms/default.realm
+ConditionPathExists=/run/user/1000/pulse/native
+ConditionPathExists=/run/user/1000/wayland-0
 
 
 [Service]
