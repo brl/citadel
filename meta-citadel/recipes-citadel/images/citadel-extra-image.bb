@@ -11,9 +11,7 @@ PACKAGE_INSTALL = "\
     base16-vim \
     adwaita-icon-theme \
     adwaita-icon-theme-cursors \
-    adwaita-icon-theme-hires \
     adwaita-icon-theme-symbolic \
-    adwaita-icon-theme-symbolic-hires \
 "
 
 CITADEL_IMAGE_VERSION = "${CITADEL_IMAGE_VERSION_extra}"

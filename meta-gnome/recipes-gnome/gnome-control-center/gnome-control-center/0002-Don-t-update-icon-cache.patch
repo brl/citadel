@@ -1,6 +1,6 @@
-From 2b1c7399ee9f0e8c1eefbb5f5cda23afac3028f2 Mon Sep 17 00:00:00 2001
+From 2f2469b859ddc78f989e365aaffccbabc8bd465f Mon Sep 17 00:00:00 2001
 From: Bruce Leidl <bruce@subgraph.com>
-Date: Fri, 23 Sep 2022 10:34:36 -0400
+Date: Wed, 3 Apr 2024 10:09:32 -0400
 Subject: [PATCH] Don't update icon cache
 
 ---
@@ -8,10 +8,10 @@ Subject: [PATCH] Don't update icon cache
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/meson.build b/meson.build
-index 6b31d76..11d1b9e 100644
+index 99c4228..c1c1d4a 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -339,7 +339,7 @@ endif
+@@ -348,7 +348,7 @@ endif
  
  gnome.post_install(
    glib_compile_schemas: true,

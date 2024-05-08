@@ -9,7 +9,6 @@ BASH_COMPLETION = "\
     bash-completion \
     iproute2-bash-completion \
     glib-2.0-bash-completion \
-    pulseaudio-bash-completion \
     systemd-bash-completion \
     util-linux-bash-completion \
 "

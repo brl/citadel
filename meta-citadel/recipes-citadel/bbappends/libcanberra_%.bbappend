@@ -1,0 +1,1 @@
+PACKAGECONFIG = "pulseaudio gtk3"

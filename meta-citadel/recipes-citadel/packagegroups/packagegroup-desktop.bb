@@ -17,7 +17,6 @@ RDEPENDS:${PN} = "\
     gdm \
     plymouth \
     shared-mime-info \
-    pulseaudio-server \
     sound-theme-freedesktop \
     iso-codes \
     libgudev \
@@ -45,4 +44,10 @@ RDEPENDS:${PN} = "\
     librsvg \
     librsvg-gtk \
     glib-2.0-utils \
+    virglrenderer \
+    rtkit \
+    libcanberra-pulse \
+    pipewire-tools \
+    pipewire-spa-tools \
+    alsa-utils \
 "
