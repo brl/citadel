@@ -8,10 +8,8 @@ DEPENDS = ""
 S = "${WORKDIR}"
 
 DEFAULT_REALM_UNITS = "\
-    file://systemd/launch-default-realm.path \
-    file://systemd/launch-default-realm.service \
-    file://systemd/watch-run-user.path \
-    file://systemd/watch-run-user.service \
+    file://systemd/citadel-launch-default-realm.path \
+    file://systemd/citadel-launch-default-realm.service \
 "
 
 MODPROBE_CONFIG = "\
@@ -48,7 +46,6 @@ SRC_URI = "\
     file://citadel-installer.desktop \
     file://citadel-installer-ui.desktop \
     file://systemd/zram-swap.service \
-    file://systemd/sway-session-switcher.service \
     file://systemd/x11-session-switcher.service \
     file://systemd/citadel-installer-backend.service \
     file://systemd/installer-session-switcher.service \
@@ -77,7 +74,7 @@ RDEPENDS:${PN} = "bash"
 
 inherit allarch systemd useradd
 
-SYSTEMD_SERVICE:${PN} = "zram-swap.service watch-run-user.path sway-session-switcher.service x11-session-switcher.service citadel-installer-backend.service installer-session-switcher.service citadel-setpassword.service"
+SYSTEMD_SERVICE:${PN} = "zram-swap.service citadel-launch-default-realm.path x11-session-switcher.service citadel-installer-backend.service installer-session-switcher.service citadel-setpassword.service"
 
 do_install() {
     install -m 0755 -d ${D}/storage
@@ -117,7 +114,6 @@ do_install() {
 
     install -m 644 ${WORKDIR}/systemd/zram-swap.service ${D}${systemd_system_unitdir}
 
-    install -m 644 ${WORKDIR}/systemd/sway-session-switcher.service ${D}${systemd_system_unitdir}
     install -m 644 ${WORKDIR}/systemd/x11-session-switcher.service ${D}${systemd_system_unitdir}
     install -m 644 ${WORKDIR}/systemd/citadel-installer-backend.service ${D}${systemd_system_unitdir}
     install -m 644 ${WORKDIR}/systemd/installer-session-switcher.service ${D}${systemd_system_unitdir}
@@ -127,10 +123,8 @@ do_install() {
     install -d ${D}${systemd_user_unitdir}/gnome-session@citadel-installer.target.d
     install -m 644 ${WORKDIR}/systemd/user/gnome-session@citadel-installer.target.d/session.conf ${D}${systemd_user_unitdir}/gnome-session@citadel-installer.target.d
 
-    install -m 644 ${WORKDIR}/systemd/watch-run-user.path ${D}${systemd_system_unitdir}
-    install -m 644 ${WORKDIR}/systemd/watch-run-user.service ${D}${systemd_system_unitdir}
-    install -m 644 ${WORKDIR}/systemd/launch-default-realm.path ${D}${systemd_system_unitdir}
-    install -m 644 ${WORKDIR}/systemd/launch-default-realm.service ${D}${systemd_system_unitdir}
+    install -m 644 ${WORKDIR}/systemd/citadel-launch-default-realm.path ${D}${systemd_system_unitdir}
+    install -m 644 ${WORKDIR}/systemd/citadel-launch-default-realm.service ${D}${systemd_system_unitdir}
 
     # skel files for new realms
     install -m 644 -T ${WORKDIR}/skel/profile ${D}${sysconfdir}/skel/.profile

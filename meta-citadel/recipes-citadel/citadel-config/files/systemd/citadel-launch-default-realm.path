@@ -1,6 +1,11 @@
 [Unit]
 Description=Wait for creation of PA and Wayland sockets before launching first realm.
+Wants=run-user-1000.mount
+After=run-user-1000.mount
 
 [Path]
 PathChanged=/run/user/1000/pulse/native
 PathChanged=/run/user/1000/wayland-0
+
+[Install]
+WantedBy=graphical.target

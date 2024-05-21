@@ -1,5 +1,6 @@
 [Unit]
 Description=Launch default realm
+
 ConditionPathExists=!/run/realms
 ConditionPathExists=/realms/default.realm
 ConditionPathExists=/run/user/1000/pulse/native
@@ -10,3 +11,4 @@ ConditionPathExists=/run/user/1000/wayland-0
 ExecStart=/usr/libexec/citadel-boot start-realms
 Type=oneshot
 RemainAfterExit=yes
+
