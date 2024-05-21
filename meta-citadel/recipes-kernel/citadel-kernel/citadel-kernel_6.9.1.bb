@@ -9,7 +9,7 @@ SRC_URI = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${PV}.tar.xz\
     file://defconfig \
 "
 
-SRC_URI[sha256sum] = "4cac13f7b17bd8dcf9032ad68f9123ab5313d698c9f59416043165150763eb4f"
+SRC_URI[sha256sum] = "01b414ba98fd189ecd544435caf3860ae2a790e3ec48f5aa70fdf42dc4c5c04a"
 
 LINUX_VERSION ?= "${PV}"
 S = "${WORKDIR}/linux-${LINUX_VERSION}"
@@ -29,15 +29,15 @@ do_deploy:append() {
 # doesn't pass destination argument to lz4 in which case the decompressed output
 # just disappears into thin air it seems.
 #
-copy_initramfs() {
-    echo "copy_initramfs override"
-    mkdir -p ${B}/usr
-    rm -f ${B}/usr/${INITRAMFS_IMAGE_NAME}.cpio
-    cp ${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE_NAME}.cpio.lz4 ${B}/usr/.
-    lz4 -df ${B}/usr/${INITRAMFS_IMAGE_NAME}.cpio.lz4 ${B}/usr/${INITRAMFS_IMAGE_NAME}.cpio
-    ls -al ${B}/usr
-    echo "Finished copy of initramfs into ./usr"
-}
+#copy_initramfs() {
+#    echo "copy_initramfs override"
+#    mkdir -p ${B}/usr
+#    rm -f ${B}/usr/${INITRAMFS_IMAGE_NAME}.cpio
+#    cp ${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE_NAME}.cpio.lz4 ${B}/usr/.
+#    lz4 -df ${B}/usr/${INITRAMFS_IMAGE_NAME}.cpio.lz4 ${B}/usr/${INITRAMFS_IMAGE_NAME}.cpio
+#    ls -al ${B}/usr
+#    echo "Finished copy of initramfs into ./usr"
+#}
 
 # Don't install kernel into images, see kernel.bbclass
 RDEPENDS:${KERNEL_PACKAGE_NAME}-base = ""
