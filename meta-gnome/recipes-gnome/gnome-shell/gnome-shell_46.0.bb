@@ -11,8 +11,6 @@ SRCREV = "fdacdf5cc80a94e04549d864f2d4dbac5f15f4bc"
 EXTERNAL_TREE_VAR="CITADEL_GNOME_SHELL_PATH"
 GIT_URI = "gitsm://github.com/brl/gnome-shell.git;branch=citadel-46.0;protocol=https"
 
-GNOMEBASEBUILDCLASS = "meson"
-
 DEPENDS = " \
     libxml2-native \
     sassc-native \
@@ -24,7 +22,6 @@ DEPENDS = " \
     gnome-autoar \
     polkit \
     libsoup-3.0 \
-    libcroco \
     startup-notification \
     ibus \
     gsettings-desktop-schemas \

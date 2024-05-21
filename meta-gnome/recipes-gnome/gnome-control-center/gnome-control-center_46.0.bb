@@ -3,14 +3,13 @@ DESCRIPTION = "GNOME Settings is GNOME's main interface for configuration of var
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=75859989545e37968a99b631ef42722e"
 
-GNOMEBASEBUILDCLASS = "meson"
 GTKIC_VERSION = "4"
 export XDG_DATA_DIRS = "${STAGING_DATADIR}:${STAGING_LIBDIR}"
 
 DEPENDS = " \
     accountsservice \
     colord-gtk \
-    gcr3 \
+    gcr \
     gdk-pixbuf \
     glib-2.0 \
     gnome-bluetooth \

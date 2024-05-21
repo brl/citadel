@@ -117,6 +117,8 @@ require ${THISDIR}/../../recipes-citadel/images/citadel-image.inc
 IMAGE_ROOTFS_SIZE = "8192"
 IMAGE_ROOTFS_EXTRA_SPACE = "0"
 
+IMAGE_NAME_SUFFIX = ""
+
 ROOTFS_POSTPROCESS_COMMAND += "remove_systemd_units; append_initrd_release; "
 
 SYSTEMD_UNITS = "\

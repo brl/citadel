@@ -1,4 +1,4 @@
-From 328c6884bb0201551a0597b572c8310527496417 Mon Sep 17 00:00:00 2001
+From 49cb509abd309e3b74ef4c872ae773f18dabca19 Mon Sep 17 00:00:00 2001
 From: Alexander Kanavin <alex@linutronix.de>
 Date: Fri, 1 Oct 2021 13:01:10 +0200
 Subject: [PATCH] moz.configure: do not look for llvm-objdump

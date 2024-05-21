@@ -1,4 +1,4 @@
-From 7a2a8e0129db96ec60ba8eb828e1e9965fc5f4ca Mon Sep 17 00:00:00 2001
+From 607aa4d822b0e074ae1b2fc16d7c140c3e889680 Mon Sep 17 00:00:00 2001
 From: Andre McCurdy <amccurdy@gmail.com>
 Date: Sat, 30 Apr 2016 15:29:06 -0700
 Subject: [PATCH] use <asm/sgidefs.h>

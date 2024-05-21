@@ -1,6 +1,6 @@
-From 194361a4dacb9540c0f4660c58a54f3c6bd91067 Mon Sep 17 00:00:00 2001
+From c5cfb8aa591afd5ad3aedc58fe7f410e89013605 Mon Sep 17 00:00:00 2001
 From: Kai Kang <kai.kang@windriver.com>
-Date: Mon, 18 Sep 2023 19:32:57 +0000
+Date: Fri, 22 Sep 2023 22:59:59 +0000
 Subject: [PATCH] Backport patch from firefox bugzilla to fix compile error for
  qemuarm with some armv7ve tunes such as 'armv7vethf' and 'armv7vet-vfpv3d16':
 

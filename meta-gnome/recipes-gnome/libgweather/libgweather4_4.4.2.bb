@@ -6,7 +6,6 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 GNOMEBN = "libgweather"
 S = "${WORKDIR}/${GNOMEBN}-${PV}"
 
-GNOMEBASEBUILDCLASS = "meson"
 inherit gnomebase gsettings gobject-introspection gettext gi-docgen vala features_check
 
 REQUIRED_DISTRO_FEATURES = "opengl"

@@ -14,8 +14,6 @@ DEPENDS = " \
     systemd \
 "
 
-GNOMEBASEBUILDCLASS = "meson"
-
 inherit gnomebase gettext gsettings upstream-version-is-even features_check
 
 REQUIRED_DISTRO_FEATURES = "polkit systemd pam gobject-introspection-data"

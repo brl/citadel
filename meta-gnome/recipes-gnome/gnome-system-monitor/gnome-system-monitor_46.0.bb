@@ -16,8 +16,6 @@ DEPENDS = " \
     libhandy \
 "
 
-GNOMEBASEBUILDCLASS = "meson"
-
 inherit gnomebase gsettings gnome-help itstool gtk-icon-cache features_check gettext
 
 ANY_OF_DISTRO_FEATURES = "${GTK3DISTROFEATURES}"

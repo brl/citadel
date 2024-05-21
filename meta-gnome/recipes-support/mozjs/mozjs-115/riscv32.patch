@@ -1,4 +1,4 @@
-From ff5fd2c08a0d6f0b39a9970f3b10e31a46e99383 Mon Sep 17 00:00:00 2001
+From d6aff068170e56e6773feba42a463dd8c50bc4ff Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
 Date: Sun, 24 Oct 2021 22:32:50 -0700
 Subject: [PATCH] Add RISCV32 support

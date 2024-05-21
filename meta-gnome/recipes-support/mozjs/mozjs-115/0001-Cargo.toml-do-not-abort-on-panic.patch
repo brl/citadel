@@ -1,4 +1,4 @@
-From c7ab27681ff5e0ac9e8ad36e5a9cb33eeffcbd56 Mon Sep 17 00:00:00 2001
+From f501f7c02df4f0ff5d5f100d9eeb74cd4d12ea3d Mon Sep 17 00:00:00 2001
 From: Alexander Kanavin <alex@linutronix.de>
 Date: Fri, 1 Oct 2021 13:00:24 +0200
 Subject: [PATCH] Cargo.toml: do not abort on panic

@@ -2,8 +2,6 @@ SUMMARY = "Javascript bindings for GNOME"
 LICENSE = "MIT & LGPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=8dcea832f6acf45d856abfeb2d51ec48"
 
-GNOMEBASEBUILDCLASS = "meson"
-
 DEPENDS = "mozjs-115 cairo"
 
 inherit gnomebase gsettings gobject-introspection gettext features_check upstream-version-is-even pkgconfig

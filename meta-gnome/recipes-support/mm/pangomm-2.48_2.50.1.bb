@@ -7,7 +7,6 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d8045f3b8f929c1cb29a1e3fd737b499 \
 DEPENDS = "mm-common cairomm-1.16 glibmm-2.68 pango"
 
 GNOMEBN = "pangomm"
-GNOMEBASEBUILDCLASS = "meson"
 inherit gnomebase features_check
 
 SRC_URI[archive.sha256sum] = "ccc9923413e408c2bff637df663248327d72822f11e394b423e1c5652b7d9214"

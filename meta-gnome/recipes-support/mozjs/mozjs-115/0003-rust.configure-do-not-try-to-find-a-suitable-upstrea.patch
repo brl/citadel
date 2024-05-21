@@ -1,4 +1,4 @@
-From fc2afb92f7be4eba7b65bb35859979e02b8f4ada Mon Sep 17 00:00:00 2001
+From ac6a3711917ff3f2b64662cbf4681c22a09da403 Mon Sep 17 00:00:00 2001
 From: Alexander Kanavin <alex@linutronix.de>
 Date: Fri, 1 Oct 2021 13:02:17 +0200
 Subject: [PATCH] rust.configure: do not try to find a suitable upstream target

@@ -40,7 +40,6 @@ RDEPENDS:${PN} = "\
     ibus \
     libsecret \
     libwacom \
-    libcroco \
     librsvg \
     librsvg-gtk \
     glib-2.0-utils \

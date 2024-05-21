@@ -1,6 +1,6 @@
-From 37039e1af278b7776fb6b614ded5deaf0c66ece9 Mon Sep 17 00:00:00 2001
+From 9aae71c6ee73431d2609be0ef74ffd4b22b36c75 Mon Sep 17 00:00:00 2001
 From: Khem Raj <raj.khem@gmail.com>
-Date: Mon, 18 Sep 2023 19:32:55 +0000
+Date: Fri, 22 Sep 2023 22:59:56 +0000
 Subject: [PATCH] Musl does not have stack unwinder like glibc therefore we can
  not assume that its always available on musl, we do need to check for target
  environment as well which could be musl or glibc.

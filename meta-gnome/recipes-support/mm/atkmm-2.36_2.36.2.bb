@@ -9,7 +9,6 @@ DEPENDS = "atk glibmm-2.68"
 
 GNOMEBN = "atkmm"
 
-GNOMEBASEBUILDCLASS = "meson"
 inherit gnomebase features_check
 
 ANY_OF_DISTRO_FEATURES = "${GTK3DISTROFEATURES}"

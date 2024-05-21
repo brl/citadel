@@ -43,8 +43,6 @@ SRCREV = "ab32580b4c916914aec8429b3d4d68fef1dd583e"
 EXTERNAL_TREE_VAR="CITADEL_MUTTER_PATH"
 GIT_URI = "git://github.com/brl/mutter.git;branch=citadel-46.0;protocol=https"
 
-GNOMEBASEBUILDCLASS = "meson"
-
 inherit gnomebase gsettings gobject-introspection gettext upstream-version-is-even features_check external-tree
 
 # x11 is still mandatory - see meson.build

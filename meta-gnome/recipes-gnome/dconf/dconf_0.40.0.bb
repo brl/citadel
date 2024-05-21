@@ -7,8 +7,6 @@ SRC_URI[archive.sha256sum] = "cf7f22a4c9200421d8d3325c5c1b8b93a36843650c9f95d645
 
 DEPENDS = "dbus glib-2.0 xmlto-native glib-2.0-native"
 
-GNOMEBASEBUILDCLASS = "meson"
-
 inherit gnomebase bash-completion vala
 
 SRC_URI += "file://0001-meson.build-do-not-compile-docs.patch"
